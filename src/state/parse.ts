@@ -19,7 +19,7 @@ const queryableKeys = {
 const createInternalTag = (tagName: 'meta' | 'link') => (
   tagAttributes: MetaTag | LinkTag
 ) => {
-  const tagQueryableKeys = queryableKeys[tagName];
+  const tagQueryableKeys = tagAttributes?.rel === 'canonical' ? ['rel', 'sizes', 'hreflang'] : queryableKeys[tagName];
   const queryKeys = tagQueryableKeys
     .concat('id')
     .map((queryKey) =>
